@@ -69,4 +69,7 @@ input[type=number], select {
   input[type=button]:hover {
     background-color: #182C61;
   }
+  .slideshow{
+      margin: 1rem;
+  }
   
