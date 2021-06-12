@@ -1,5 +1,6 @@
 body{
-    background-color: white  ;
+    background-color: white;
+    font-family: 'Raleway', sans-serif;
     margin: 0;
 }
 .container{
@@ -15,7 +16,6 @@ body{
     padding: 0.5rem;
 }
 .title{
-    font-family: 'Raleway', sans-serif;
     font-size: 3rem;
     font-weight: 200;
     width: 100%;
@@ -27,13 +27,16 @@ body{
     float: left;
     margin: 0.5rem;
     border: 0.25rem solid #a4b0be;
+    border-radius: 4px;
 }
 .rightBanner{
     width: 45%;
     height: 32rem;
     float: right;
+    padding: 1rem;
     margin: 0.5rem;
     border: 0.25rem solid #a4b0be;
+    border-radius: 4px;
 }
 .footer{
     background-color: #1B9CFC;
@@ -41,3 +44,29 @@ body{
     height: 2rem;
     clear: both;
 }
+
+input[type=number], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=button] {
+    width: 100%;
+    background-color: #3B3B98;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type=button]:hover {
+    background-color: #182C61;
+  }
+  
