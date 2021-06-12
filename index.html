@@ -2,81 +2,119 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <title>Check Your Ride</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Check Your Ride</title>
 </head>
 
 <body>
-  <div class="container">
-    <div class="headline">
-      <p class="title"> Check Your Ride </p>
-    </div>
-    <div class="leftBanner">
-      <div class="slideshow">
-        <div class="slide">
-          <img src="bmw.jpg" style="width:100%">
+    <div class="container">
+        <div class="headline">
+            <p class="title"> Check Your Ride </p>
         </div>
-        <div class="slide">
-          <img src="mercedes.jpg" style="width:100%">
-        </div>
-        <div class="slide">
-          <img src="maserati.jpg" style="width:100%">
-        </div>
-        <br>
-          <script>
-            var slideIndex = 0;
-            slideshow();
+        <div class="leftBanner">
+            <div class="slideshow">
+                <div class="slide">
+                    <img src="bmw.jpg" style="width:100%">
+                </div>
+                <div class="slide">
+                    <img src="mercedes.jpg" style="width:100%">
+                </div>
+                <div class="slide">
+                    <img src="maserati.jpg" style="width:100%">
+                </div>
+                <br>
+                <script>
+                    var slideIndex = 0;
+                    slideshow();
 
-            function slideshow() {
-              var i;
-              var slides = document.getElementsByClassName("slide");
-              for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-              }
-              slideIndex++;
-              if (slideIndex > slides.length) { slideIndex = 1 }
-              slides[slideIndex - 1].style.display = "block";
-              setTimeout(slideshow, 4000);
-            }
-          </script>
-        </div>
+                    function slideshow() {
+                        var i;
+                        var slides = document.getElementsByClassName("slide");
+                        for (i = 0; i < slides.length; i++) {
+                            slides[i].style.display = "none";
+                        }
+                        slideIndex++;
+                        if (slideIndex > slides.length) {
+                            slideIndex = 1
+                        }
+                        slides[slideIndex - 1].style.display = "block";
+                        setTimeout(slideshow, 4000);
+                    }
+                </script>
+            </div>
 
-      </div>
-      <div class="summary"></div>
-      <div class="opinions"></div>
+        </div>
+        <div class="summary"></div>
+        <div class="opinions"></div>
     </div>
     <div class="rightBanner">
-      <div class="form">
-        <form>
-          <label for="road">How Many Kilometers Have You Done</label>
-          <input type="number" id="road" placeholder="100..">
-          <br>
-          <label for="consumption">Fuel Consumption In Liters</label>
-          <input type="number" id="consumption" placeholder="10..">
-          <br>
-          <label for="fuel">Fuel Type</label>
-          <select id="fuel">
-            <option value="gasoline">Gasoline</option>
-            <option value="diesel">Diesel</option>
-            <option value="gasolineLPG">Gasoline + LPG</option>
-          </select>
-          <br>
-          <input type="button" id="button" value="Submit">
-        </form>
-        <p id="result" class="result"></p>
-      </div>
+        <div class="form">
+            <form>
+                <label for="road">How Many Kilometers Have You Done</label>
+                <input type="number" id="road" placeholder="100..">
+                <br>
+                <label for="consumption">Fuel Consumption In Liters Per 100 Kilometers</label>
+                <input type="number" id="consumption" placeholder="10..">
+                <br>
+                <label for="fuel">Fuel Type</label>
+                <select id="fuel">
+          <option value="gasoline">Gasoline</option>
+          <option value="diesel">Diesel</option>
+          <option value="gasolineLPG">Gasoline + LPG</option>
+        </select>
+                <br>
+                <input type="button" id="button" value="Submit">
+            </form>
+            <p id="result" class="result"></p>
+        </div>
+        <script>
+            function drivingQuote() {
+
+                let road = Number(document.getElementById("road").value);
+                let consumption = Number(document.getElementById("consumption").value);
+                let fuelType = document.getElementById("fuel").value;
+
+                let gasolinePrice = 5.21;
+                let dieselPrice = 5.08;
+                let gasolineLPGPrice = 2.38;
+
+                let totalConsumption = consumption * road / 100;
+
+                if (fuelType == "gasoline") {
+                    totalPrice = totalConsumption * gasolinePrice;
+                } else if (fuelType == "diesel") {
+                    totalPrice = totalConsumption * dieselPrice;
+                } else {
+                    totalPrice = totalConsumption * gasolineLPGPrice;
+                }
+
+                totalConsumption = Math.round(totalConsumption * 100) / 100;
+                totalPrice = Math.round(totalPrice * 100) / 100;
+
+                document.getElementById("result").innerHTML = "Your Car Will Burn " + totalConsumption + " Liters <br><br> Your Trip Will Cost: " + totalPrice + " pln.";
+            }
+            document.getElementById("button").addEventListener("click", drivingQuote);
+        </script>
     </div>
     <div class="footer">
-      <div class="copyright"></div>
-      <div class="contact"></div>
+        <div class="copyright">
+            <p>Copyright <span>&#169</span> 2021 Damian Ruczyński</p>
+        </div>
+        <div class="contact">
+            <ul>
+                <li>Author: Damian Ruczynski</li>
+                <li>E-mail: damian.m.ruczynski@gmail.com</li>
+                <li>Phone number: 511 388 146</li>
+            </ul>
+        </div>
     </div>
 
-  </div>
+    </div>
 </body>
 
 </html>
